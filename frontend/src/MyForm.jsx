@@ -1,16 +1,4 @@
-import {
-  Flex,
-  Box,
-  FormControl,
-  FormLabel,
-  Input,
-  Stack,
-  Button,
-  Heading,
-  Text,
-  useColorModeValue,
-  Textarea,
-} from "@chakra-ui/react";
+import { Flex, Box, FormControl, FormLabel, Input, Stack, Button, Heading, Text, useColorModeValue, Textarea} from "@chakra-ui/react";
 import { useState } from "react";
 
 export default function MyForm() {
@@ -18,7 +6,7 @@ export default function MyForm() {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
 
-  const baseUrl = "http://localhost:8000";
+  const BackendURL= "http://localhost:8000";
 
   const sendEmail = async () => {
     let dataSend = {
@@ -27,16 +15,14 @@ export default function MyForm() {
       message: message,
     };
 
-    const res = await fetch(`${baseUrl}/email/sendEmail`, {
+    const res1 = await fetch(`${BackendURL}/email/sendEmail`, {
       method: "POST",
       body: JSON.stringify(dataSend),
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-    })
-      // HANDLING ERRORS
-      .then((res) => {
+    }).then((res) => {
         console.log(res);
         if (res.status > 199 && res.status < 300) {
           alert("Send Successfully !");
@@ -52,9 +38,9 @@ export default function MyForm() {
     >
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
         <Stack align={"center"}>
-          <Heading fontSize={"4xl"}>Send email to the account</Heading>
+          <Heading fontSize={"3xl"}>Creating SMTP(Simple Mail Transfer Protocol server Using Reactjs And Nodejs)</Heading>
           <Text fontSize={"lg"} color={"gray.600"}>
-            Don't forget to subscribe ✌️
+            Intern Task 1
           </Text>
         </Stack>
         <Box
